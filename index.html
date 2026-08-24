@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xeporto — Mediterranean Mezze Restaurant</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,sans-serif;
+  color:#24312f;
+  background:#f7f3ea;
+  line-height:1.6
+}
+header{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  background:rgba(247,243,234,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #ddd5c5
+}
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:17px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.logo{
+  font-family:"DM Serif Display",serif;
+  font-size:28px;
+  color:#254f4a;
+  text-decoration:none
+}
+nav a{
+  color:#24312f;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:14px;
+  font-weight:600
+}
+nav a:hover{color:#a36b43}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:130px 25px 80px;
+  background:
+    linear-gradient(rgba(25,66,63,.48),rgba(25,66,63,.58)),
+    linear-gradient(135deg,#b8d5d0,#e7d4bd);
+  color:white
+}
+.hero-inner{max-width:850px}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:13px;
+  margin-bottom:18px
+}
+h1{
+  font-family:"DM Serif Display",serif;
+  font-size:clamp(58px,10vw,105px);
+  line-height:.95;
+  font-weight:400
+}
+.hero p{
+  max-width:650px;
+  margin:28px auto;
+  font-size:19px
+}
+.btn{
+  display:inline-block;
+  padding:13px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  margin:5px;
+  transition:.2s
+}
+.btn-primary{background:#fff;color:#254f4a}
+.btn-outline{border:1px solid white;color:white}
+.btn:hover{transform:translateY(-2px)}
+
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:90px 25px
+}
+.section-title{
+  font-family:"DM Serif Display",serif;
+  font-size:48px;
+  color:#254f4a;
+  text-align:center;
+  margin-bottom:12px
+}
+.section-intro{
+  text-align:center;
+  max-width:650px;
+  margin:0 auto 45px;
+  color:#69706d
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+  align-items:center
+}
+.about-card{
+  background:#e3ece7;
+  padding:45px;
+  border-radius:8px
+}
+.about-card h2{
+  font-family:"DM Serif Display",serif;
+  font-size:42px;
+  color:#254f4a;
+  margin-bottom:15px
+}
+
+.menu-nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:40px
+}
+.menu-nav a{
+  text-decoration:none;
+  color:#254f4a;
+  border:1px solid #bfcfc9;
+  border-radius:25px;
+  padding:8px 16px;
+  font-size:13px
+}
+.menu-nav a:hover{background:#254f4a;color:white}
+
+.menu-section{
+  margin-bottom:65px;
+  scroll-margin-top:100px
+}
+.menu-heading{
+  font-family:"DM Serif Display",serif;
+  color:#254f4a;
+  font-size:36px;
+  border-bottom:1px solid #cfc6b6;
+  padding-bottom:10px;
+  margin-bottom:8px
+}
+.menu-item{
+  padding:18px 0;
+  border-bottom:1px solid #e1dbcf
+}
+.item-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px
+}
+.item-name{font-weight:600;font-size:16px}
+.price{font-weight:600;color:#a36b43;white-space:nowrap}
+.description{color:#69706d;font-size:14px}
+.allergen{font-size:12px;color:#8b7770;font-style:italic}
+
+.note{
+  background:#eee7da;
+  padding:15px 20px;
+  border-radius:8px;
+  margin:20px 0;
+  font-size:13px
+}
+
+.contact{
+  background:#254f4a;
+  color:white;
+  max-width:none;
+  text-align:center
+}
+.contact .section-title{color:white}
+.contact-inner{max-width:750px;margin:auto}
+.contact p{margin:12px 0}
+.contact a{color:white}
+
+footer{
+  background:#193b38;
+  color:#dbe5e1;
+  text-align:center;
+  padding:28px 20px;
+  font-size:13px
+}
+
+@media(max-width:700px){
+  nav a{display:none}
+  .nav{padding:14px 18px}
+  .about{grid-template-columns:1fr}
+  section{padding:65px 20px}
+  .section-title{font-size:40px}
+  .menu-heading{font-size:30px}
+  .item-top{align-items:flex-start}
+  .hero p{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#">Xeporto</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Parea • Mezze • Kalo Krasi</div>
+    <h1>Xeporto</h1>
+    <p> Mediterranean mezze, Greek hospitality and good wine. Come together, share the table and enjoy your meal.</p>
+    <a href="#menu" class="btn btn-primary">Explore the Menu</a>
+    <a href="#contact" class="btn btn-outline">Find Us</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <div>
+      <div class="eyebrow">Enjoy Your Meal</div>
+      <h2 class="section-title" style="text-align:left">Mediterranean at heart</h2>
+      <p>
+        Xeporto is a Mediterranean mezze restaurant built around the Greek tradition
+        of sharing food, conversation and wine around the table.
+      </p>
+      <br>
+      <p><strong>Executive Chef: Nikos Iliadis</strong></p>
+      <p>Open daily from <strong>13:00 – 22:30</strong></p>
+    </div>
+
+    <div class="about-card">
+      <h2>Parea</h2>
+      <p>
+        Good food tastes even better when shared. Our menu brings together
+        traditional Greek flavors, fresh Mediterranean ingredients and dishes
+        designed for the center of the table.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <h2 class="section-title">Our Menu</h2>
+  <p class="section-intro">
+    Traditional Greek flavors, Mediterranean ingredients and dishes made for sharing.
+  </p>
+
+  <div class="menu-nav">
+    <a href="#center">Center of Table</a>
+    <a href="#spreads">Spreads</a>
+    <a href="#appetizers">Appetizers</a>
+    <a href="#salads">Salads</a>
+    <a href="#meat">Meat</a>
+    <a href="#sea">From the Sea</a>
+    <a href="#drinks">Drinks</a>
+  </div>
+
+  <div class="menu-section" id="center">
+    <h3 class="menu-heading">For the Center of the Table</h3>
+
+    <div class="menu-item">
+      <div class="item-top"><span class="item-name">Barley Rusks with Olive Oil</span><span class="price">3€</span></div>
+      <div class="allergen">Allergens: Gluten</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-top"><span class="item-name">Freshly Baked Bread with Olive Dip</span><span class="price">3€</span></div>
+      <div class="allergen">Allergens: Gluten</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-top"><span class="item-name">Grilled Pita Bread with Salt & Oregano</span><span class="price">3€</span></div>
+      <div class="allergen">Allergens: Gluten</div>
+    </div>
+  </div>
+
+  <div class="menu-section" id="spreads">
+    <h3 class="menu-heading">Spreads & Cold Mezze</h3>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Smoked Eggplant with Walnuts & Feta (V)</span><span class="price">7€</span></div><div class="allergen">Allergens: Dairy, Nuts</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Tzatziki with Cucumber Cubes (V)</span><span class="price">6.50€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Spicy Feta with Chili (V)</span><span class="price">7€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">White Tarama with Breadsticks & Chives</span><span class="price">8€</span></div><div class="allergen">Allergens: Gluten, Fish</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Santorini's Fava with Caramelized Onion & Capers (Vegan)</span><span class="price">8€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Hummus with Tahini, Smoked Paprika & Chives (Vegan)</span><span class="price">8€</span></div><div class="allergen">Allergens: Sesame</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Marinated Gavros with Black Tarama</span><span class="price">8€</span></div><div class="allergen">Allergens: Fish</div></div>
+  </div>
+
+  <div class="menu-section" id="appetizers">
+    <h3 class="menu-heading">Appetizers</h3>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Steamed Mussels with Ouzo & Mediterranean Herbs</span><span class="price">12€</span></div><div class="allergen">Allergens: Shellfish, Mustard</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Shrimps Saganaki with Tomato Sauce, Feta & Parsley</span><span class="price">15€</span></div><div class="allergen">Allergens: Shellfish, Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Dolmadakia (Stuffed Vine Leaves) with Yogurt & Dill</span><span class="price">8€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Sautéed Mushrooms with Garlic, Chili & Cashews (Vegan)</span><span class="price">8€</span></div><div class="allergen">Allergens: Nuts</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">French Fries with Crumbled Feta (V)</span><span class="price">6€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Baby Potatoes Sautéed with Butter, Thyme & Kefalotyri (V)</span><span class="price">7€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">French Fries Potatoes with Fried Eggs (V)</span><span class="price">8€</span></div><div class="allergen">Allergens: Egg</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Crispy Zucchini Fritters with Tzatziki (V)</span><span class="price">8€</span></div><div class="allergen">Allergens: Gluten, Dairy, Egg</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Macedonian Bouyiourdi</span><span class="price">8€</span></div><div class="description">Smoked cheese, Greek feta, hot chili pepper, fresh tomato, virgin olive oil & oregano</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">“Loukoumas” Feta cheese with Honey & Mixed Sesame (V)</span><span class="price">9€</span></div><div class="allergen">Allergens: Dairy, Sesame, Gluten, Mustard</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Grilled Halloumi with Tomato Jam & Pistachios (V)</span><span class="price">9€</span></div><div class="allergen">Allergens: Dairy, Nuts</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Kefalotyri Saganaki with Ouzo Aroma & Smoked Paprika (V)</span><span class="price">8€</span></div><div class="allergen">Allergens: Dairy, Gluten</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Eggplants with Tomato Sauce, Basil & Feta (V)</span><span class="price">8€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Thracian Kavourmas with Fried Egg, Herbs & Red Chili Pepper Flakes</span><span class="price">9€</span></div><div class="allergen">Allergens: Egg, Dairy</div></div>
+  </div>
+
+  <div class="menu-section" id="salads">
+    <h3 class="menu-heading">Salads</h3>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Greek Salad (V)</span><span class="price">10€</span></div><div class="description">Cherry tomatoes, cucumber, capers, tomato, olives, onion, peppers, feta, olive oil & oregano</div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Cretan Salad (V)</span><span class="price">9€</span></div><div class="description">Carob rusks, tomato, olives, capers, feta & baby arugula</div><div class="allergen">Allergens: Dairy, Gluten</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Byzantine Beetroot Salad (V)</span><span class="price">8€</span></div><div class="description">Diced beetroot, aioli sauce, fresh herbs, green apple & walnuts</div><div class="allergen">Allergens: Dairy, Egg, Nuts</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Mediterranean Potato Salad (Vegan)</span><span class="price">8€</span></div><div class="description">Capers, spring onion, grated carrot, peppers, parsley & mustard vinaigrette</div><div class="allergen">Allergens: Mustard</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Legume Salad (Vegan)</span><span class="price">8€</span></div><div class="description">Chickpeas, black-eyed beans, olives, cucumber, Florina pepper & lemon vinaigrette</div><div class="allergen">Allergens: Mustard</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Xeporto Salad (V)</span><span class="price">12€</span></div><div class="description">Baby greens, mango, pomegranate, walnuts, cheese balls with poppy seeds & pomegranate dressing</div><div class="allergen">Allergens: Dairy, Mustard, Nuts</div></div>
+  </div>
+
+  <div class="menu-section" id="meat">
+    <h3 class="menu-heading">Meat Mezze</h3>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Pork Pan-Fry with Onion, Peppers, Lemon & Oregano</span><span class="price">13€</span></div><div class="allergen">Allergens: Mustard</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Sweet & Sour Chicken with Toasted Sesame</span><span class="price">13€</span></div><div class="allergen">Allergens: Sesame</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Traditional Spetsofai (Pelion Style)</span><span class="price">12€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Fried Meatballs with Yogurt Sauce & Paprika</span><span class="price">11€</span></div><div class="allergen">Allergens: Dairy</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Greek Sausage with Leek & Spicy Mustard</span><span class="price">13€</span></div><div class="allergen">Allergens: Mustard</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Florina’s Kebab with Yogurt & Chili Flakes</span><span class="price">12€</span></div><div class="allergen">Allergens: Dairy, Egg, Gluten</div></div>
+  </div>
+
+  <div class="menu-section" id="sea">
+    <h3 class="menu-heading">From the Sea</h3>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Grilled Sardines with Oregano, Onion & Lemon Dressing</span><span class="price">13€</span></div><div class="allergen">Allergens: Fish</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Fried Baby Squid with Aioli Sauce</span><span class="price">15€</span></div><div class="allergen">Allergens: Mollusks</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Grilled Octopus with Fava, Capers & Cherry Tomato Confit</span><span class="price">21€</span></div><div class="allergen">Allergens: Mollusks</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Grilled Shrimps with Baby Greens & Lemon Vinaigrette</span><span class="price">19€</span></div><div class="allergen">Allergens: Shellfish</div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Grilled Baby Squid with Arugula, Cherry Tomatoes, Lemon & Aioli Sauce</span><span class="price">16€</span></div><div class="allergen">Allergens: Mollusks</div></div>
+
+    <div class="note">
+      <strong>Fresh Fish of the Day — Upon Request</strong><br>
+      Served with grilled vegetables & lemon vinaigrette.<br>
+      Allergens: Fish
+    </div>
+
+    <div class="note">
+      <strong>Fresh Lobster — Upon Request</strong><br>
+      Lobster pasta with linguine OR grilled with vegetables & lemon dressing.<br>
+      Allergens: Shellfish
+    </div>
+  </div>
+
+  <div class="menu-section" id="drinks">
+    <h3 class="menu-heading">Drinks</h3>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Coca-Cola</span><span class="price">4€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Fanta Orange</span><span class="price">4€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Fanta Lemon</span><span class="price">4€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Sprite</span><span class="price">4€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Sparkling Water 330ml</span><span class="price">3.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Sparkling Water 750ml</span><span class="price">6.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Fresh Orange Juice</span><span class="price">7.50€</span></div></div>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Espresso</span><span class="price">3.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Double Espresso</span><span class="price">4.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Cappuccino</span><span class="price">5€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Freddo Espresso</span><span class="price">5€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Freddo Cappuccino</span><span class="price">5.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Frappe</span><span class="price">4€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Latte</span><span class="price">5€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Americano</span><span class="price">4.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Greek Coffee</span><span class="price">4.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Chocolate</span><span class="price">5€</span></div></div>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Raki 100ml</span><span class="price">4.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Raki 200ml</span><span class="price">7.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Rakomelo 200ml</span><span class="price">8.50€</span></div></div>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">House Wine — White, Rosé, Red — 250ml</span><span class="price">5.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">House Wine — 500ml</span><span class="price">7.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">House Wine — 1lt</span><span class="price">13.50€</span></div></div>
+
+    <div class="menu-item"><div class="item-top"><span class="item-name">Alfa Beer</span><span class="price">5.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Fischer Beer</span><span class="price">5.50€</span></div></div>
+    <div class="menu-item"><div class="item-top"><span class="item-name">Mamos Beer</span><span class="price">5.50€</span></div></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <h2 class="section-title">Come Visit Us</h2>
+    <p>Enjoy your meal at Xeporto.</p>
+    <p><strong>Opening Hours</strong><br>13:00 – 22:30</p>
+    <p><strong>Executive Chef</strong><br>Nikos Iliadis</p>
+
+    <br>
+
+    <a class="btn btn-primary" href="tel:+302286030653">Call Xeporto</a>
+    <a class="btn btn-outline"
+       href="https://www.google.com/maps/search/?api=1&query=Xeporto+Pyrgos+Santorini"
+       target="_blank">Open in Maps</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Xeporto — Mediterranean Mezze Restaurant<br>
+  Parea • Mezze • Kalo Krasi
+</footer>
+
+</body>
+</html>
